@@ -301,16 +301,16 @@ exit 0
 function Diy_memu() {
 cd ${GITHUB_WORKSPACE}
 export OPERATES_BUILD="0"
-curl -fsSL https://raw.githubusercontent.com/skywrt/common/main/common.sh -o common.sh
+curl -fsSL https://raw.githubusercontent.com/zwrt/common/main/common.sh -o common.sh
 if [[ $? -ne 0 ]]; then
-  wget -q https://raw.githubusercontent.com/skywrt/common/main/common.sh -O common.sh
+  wget -q https://raw.githubusercontent.com/zwrt/common/main/common.sh -O common.sh
 fi
 export ACTIONS_VERSION="$(grep -E "ACTIONS_VERSION=.*" "common.sh" |grep -Eo [0-9]+\.[0-9]+\.[0-9]+)"
 export DIY_PART_SH="$(grep -Eo "DIY_PART_SH=.*" "common.sh" |grep '.sh' |awk 'NR==1' |cut -d'"' -f2)"
 echo "DIY_PART_SH=${DIY_PART_SH}" >> ${GITHUB_ENV}
 if [[ -n "${BENDI_VERSION}" ]]; then
   export BENDI_VERSION="1"
-  export GIT_REPOSITORY="skywrt/skywrt"
+  export GIT_REPOSITORY="zwrt/zwrt"
   sudo rm -rf build common.sh
   [[ -d "operates" ]] && cp -Rf operates build
   sed -i '/TONGBU_BENDI/d' ${GITHUB_ENV}
