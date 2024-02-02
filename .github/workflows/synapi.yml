@@ -31,9 +31,9 @@ jobs:
         cd ${GITHUB_WORKSPACE}
         mkdir -p Github_Api
         cd Github_Api
-        curl -H "Authorization: Bearer ${REPO_TOKEN}" https://api.github.com/repos/ipenwrt/kernel/releases/tags/kernel_stable -o stable.api
+        curl -H "Authorization: Bearer ${REPO_TOKEN}" https://api.github.com/repos/zwrt/kernel/releases/tags/kernel_stable -o stable.api
         if [[ $? -ne 0 ]]; then
-          curl -H "Authorization: Bearer ${REPO_TOKEN}" https://api.github.com/repos/ipenwrt/kernel/releases/tags/kernel_stable > stable.api
+          curl -H "Authorization: Bearer ${REPO_TOKEN}" https://api.github.com/repos/zwrt/kernel/releases/tags/kernel_stable > stable.api
         fi
         
         curl -H "Authorization: Bearer ${REPO_TOKEN}" https://api.github.com/repos/ophub/kernel/releases/tags/kernel_flippy -o flippy.api
